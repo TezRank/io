@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TezRank — Digital Marketing Studio, Delhi NCR</title>
+<meta name="description" content="TezRank is a Delhi NCR digital marketing studio offering SEO, Google Ads, Meta Ads and conversion-ready websites for small and medium businesses.">
+<meta property="og:title" content="TezRank — Digital Marketing Studio, Delhi NCR">
+<meta property="og:description" content="SEO, Google Ads, Meta Ads and websites for Delhi NCR businesses. Plain-language reporting, no lock-in contracts.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0E1116">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%230E1116'/%3E%3Cpath d='M14 40 L26 24 L34 32 L50 14' stroke='%23D4FF3F' stroke-width='5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M40 14 H50 V24' stroke='%23D4FF3F' stroke-width='5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0E1116;
+    --ink-2:#161B22;
+    --ink-3:#1D232C;
+    --paper:#F5F2EA;
+    --volt:#D4FF3F;
+    --ember:#FF5A36;
+    --slate:#8B92A0;
+    --bone:#ECEAE3;
+    --line: rgba(236,234,227,0.12);
+    --line-dark: rgba(14,17,22,0.12);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--ink);
+    color:var(--bone);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+
+  :focus-visible{
+    outline:2px solid var(--volt);
+    outline-offset:3px;
+    border-radius:2px;
+  }
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+  .display{
+    font-family:'Big Shoulders Display',sans-serif;
+    font-weight:900;
+    letter-spacing:-0.01em;
+    line-height:0.95;
+    text-transform:uppercase;
+  }
+  .mono{font-family:'JetBrains Mono',monospace;}
+
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--volt);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:7px;height:7px;
+    background:var(--volt);
+    border-radius:50%;
+    box-shadow:0 0 10px var(--volt);
+  }
+  .eyebrow.on-paper{color:var(--ember);}
+  .eyebrow.on-ember{color:var(--ink);}
+  .eyebrow.on-ember::before{background:var(--ink);box-shadow:none;}
+
+  /* grain texture, subtle */
+  .grain{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:0.035;
+    mix-blend-mode:overlay;
+    z-index:1;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- SCROLL PROGRESS ---------- */
+  .progress-track{
+    position:fixed;
+    top:0;left:0;right:0;
+    height:2px;
+    background:transparent;
+    z-index:60;
+  }
+  .progress-bar{
+    height:100%;
+    width:0%;
+    background:var(--volt);
+    box-shadow:0 0 8px var(--volt);
+    transition:width .08s linear;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;
+    top:2px;left:0;right:0;
+    z-index:50;
+    background:rgba(14,17,22,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 28px;
+    max-width:1180px;
+    margin:0 auto;
+  }
+  .logo{
+    display:flex;
+    align-items:center;
+    gap:9px;
+    font-family:'Big Shoulders Display',sans-serif;
+    font-weight:900;
+    font-size:23px;
+    text-transform:uppercase;
+  }
+  .logo .rank{color:var(--volt);}
+  .logo .mark{width:26px;height:26px;}
+
+  .nav-links{display:flex;gap:36px;font-size:14.5px;font-weight:500;color:var(--slate);}
+  .nav-links a{position:relative;padding:4px 0;}
+  .nav-links a:hover{color:var(--bone);}
+
+  .nav-cta{
+    background:var(--volt);
+    color:var(--ink);
+    font-weight:700;
+    font-size:14px;
+    padding:11px 20px;
+    border-radius:3px;
+    transition:transform .15s ease;
+  }
+  .nav-cta:hover{transform:translateY(-1px);}
+
+  .nav-toggle{
+    display:none;
+    background:none;border:none;
+    color:var(--bone);
+    cursor:pointer;
+    width:30px;height:22px;
+    position:relative;
+  }
+  .nav-toggle span{
+    position:absolute;left:0;right:0;height:2px;background:var(--bone);
+    transition:transform .25s ease, opacity .25s ease;
+  }
+  .nav-toggle span:nth-child(1){top:0;}
+  .nav-toggle span:nth-child(2){top:10px;}
+  .nav-toggle span:nth-child(3){top:20px;}
+  .nav-toggle.open span:nth-child(1){transform:translateY(10px) rotate(45deg);}
+  .nav-toggle.open span:nth-child(2){opacity:0;}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-10px) rotate(-45deg);}
+
+  .mobile-panel{
+    position:fixed;
+    inset:0;
+    background:var(--ink);
+    z-index:45;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:28px;
+    padding:0 40px;
+    transform:translateY(-100%);
+    transition:transform .35s ease;
+  }
+  .mobile-panel.open{transform:translateY(0);}
+  .mobile-panel a{
+    font-family:'Big Shoulders Display',sans-serif;
+    font-weight:800;
+    font-size:38px;
+    text-transform:uppercase;
+    color:var(--bone);
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:172px 0 88px;
+    position:relative;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{display:grid;grid-template-columns:1.15fr 0.85fr;gap:64px;align-items:center;}
+  .hero h1{font-size:clamp(40px,6vw,74px);margin:18px 0 26px;}
+  .hero h1 em{font-style:normal;color:var(--volt);}
+  .hero p.lede{font-size:18px;line-height:1.6;color:var(--slate);max-width:480px;margin-bottom:34px;}
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    font-weight:700;font-size:15px;padding:15px 26px;border-radius:3px;
+    transition:transform .15s ease, box-shadow .15s ease;
+    cursor:pointer;border:none;
+  }
+  .btn-primary{background:var(--ember);color:var(--ink);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(255,90,54,0.25);}
+  .btn-ghost{border:1px solid var(--line);color:var(--bone);background:transparent;}
+  .btn-ghost:hover{border-color:var(--bone);}
+
+  /* signature rank panel */
+  .rank-panel{
+    background:var(--ink-2);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:30px 26px 26px;
+    position:relative;
+    overflow:hidden;
+    box-shadow:0 30px 60px -30px rgba(0,0,0,0.6);
+  }
+  .rank-panel::before{
+    content:'';
+    position:absolute;inset:0;
+    background:radial-gradient(circle at 80% 0%, rgba(212,255,63,0.08), transparent 60%);
+    pointer-events:none;
+  }
+  .rank-panel .rp-label{
+    font-family:'JetBrains Mono',monospace;font-size:11.5px;
+    letter-spacing:0.14em;text-transform:uppercase;color:var(--slate);
+    display:flex;justify-content:space-between;margin-bottom:6px;
+  }
+  .rank-panel .rp-label span:last-child{color:var(--volt);display:flex;align-items:center;gap:5px;}
+  .rank-panel .rp-label span:last-child::before{
+    content:'';width:6px;height:6px;border-radius:50%;background:var(--volt);
+    animation:pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:0.25;}}
+
+  .rank-number{
+    font-family:'Big Shoulders Display',sans-serif;font-weight:900;
+    font-size:clamp(86px,12vw,150px);line-height:0.85;color:var(--bone);
+    display:flex;align-items:flex-start;gap:6px;
+  }
+  .rank-number .hash{font-size:0.4em;color:var(--volt);margin-top:0.18em;}
+  .rank-number .digits{transition:opacity .15s ease;}
+  .rank-sub{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--slate);margin-top:8px;}
+
+  .spark{margin-top:18px;}
+  .spark path.line{
+    stroke-dasharray:300;
+    stroke-dashoffset:300;
+    animation:draw 2.4s ease forwards 0.4s;
+  }
+  @keyframes draw{to{stroke-dashoffset:0;}}
+
+  .rank-ticker{
+    margin-top:18px;border-top:1px solid var(--line);padding-top:16px;
+    font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--slate);
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .rank-ticker .tk-row{display:flex;justify-content:space-between;}
+  .rank-ticker .up{color:var(--volt);}
+
+  /* ---------- TRUST MARQUEE ---------- */
+  .trust-strip{
+    border-bottom:1px solid var(--line);
+    padding:26px 0;
+    overflow:hidden;
+    background:var(--ink-2);
+  }
+  .trust-strip .marquee-track{
+    display:flex;
+    gap:48px;
+    white-space:nowrap;
+    animation:scroll-left 28s linear infinite;
+    width:max-content;
+  }
+  .trust-strip .marquee-track span{
+    font-family:'JetBrains Mono',monospace;
+    font-size:13px;
+    letter-spacing:0.06em;
+    color:var(--slate);
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .trust-strip .marquee-track span::before{content:'◆';color:var(--volt);font-size:9px;}
+  @keyframes scroll-left{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  @media (prefers-reduced-motion: reduce){
+    .trust-strip .marquee-track{animation:none;}
+  }
+
+  /* ---------- SECTION BASICS ---------- */
+  section{padding:96px 0;}
+  .section-head{max-width:600px;margin-bottom:56px;}
+  .section-head h2{font-size:clamp(30px,4vw,46px);margin-top:14px;}
+  .section-head p{color:var(--slate);font-size:16.5px;margin-top:14px;line-height:1.6;}
+
+  /* ---------- SERVICES ---------- */
+  .services{border-bottom:1px solid var(--line);}
+  .service-list{display:flex;flex-direction:column;}
+  .service-row{
+    display:grid;
+    grid-template-columns:52px 130px 1fr 1.05fr;
+    gap:28px;align-items:start;
+    padding:30px 0;border-top:1px solid var(--line);
+    transition:background .2s ease;
+  }
+  .service-row:last-child{border-bottom:1px solid var(--line);}
+  .service-row:hover{background:rgba(212,255,63,0.03);}
+  .service-icon{
+    width:46px;height:46px;
+    border:1px solid var(--line);
+    border-radius:8px;
+    display:flex;align-items:center;justify-content:center;
+    color:var(--volt);
+  }
+  .service-icon svg{width:22px;height:22px;}
+  .service-tag{
+    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.1em;
+    text-transform:uppercase;color:var(--volt);
+    border:1px solid var(--line);padding:6px 10px;border-radius:3px;
+    display:inline-block;width:fit-content;height:fit-content;margin-top:6px;
+  }
+  .service-row h3{
+    font-family:'Big Shoulders Display',sans-serif;font-weight:800;
+    font-size:26px;text-transform:uppercase;letter-spacing:0.01em;
+  }
+  .service-row p{color:var(--slate);font-size:15.5px;line-height:1.6;}
+
+  /* ---------- STANDARDS ---------- */
+  .standards{background:var(--paper);color:var(--ink);}
+  .standards .section-head p{color:rgba(14,17,22,0.6);}
+  .standards-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:var(--line-dark);border:1px solid var(--line-dark);
+  }
+  .standard-cell{background:var(--paper);padding:34px 24px;}
+  .standard-cell .num{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:34px;color:var(--ember);}
+  .standard-cell .lbl{margin-top:10px;font-size:14px;color:rgba(14,17,22,0.65);line-height:1.4;}
+
+  /* ---------- COMPARISON ---------- */
+  .compare{border-bottom:1px solid var(--line);}
+  .compare-table{
+    border:1px solid var(--line);
+    border-radius:8px;
+    overflow:hidden;
+  }
+  .compare-row{
+    display:grid;
+    grid-template-columns:1fr 1fr 1fr;
+  }
+  .compare-row + .compare-row{border-top:1px solid var(--line);}
+  .compare-row.head{background:var(--ink-3);}
+  .compare-cell{
+    padding:20px 24px;
+    font-size:14.5px;
+    line-height:1.5;
+  }
+  .compare-cell.label{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:0.04em;
+    color:var(--slate);
+    display:flex;
+    align-items:center;
+  }
+  .compare-cell.bad{color:var(--slate);position:relative;}
+  .compare-cell.bad::before{content:'✕ ';color:#5b6271;}
+  .compare-cell.good{color:var(--bone);font-weight:500;position:relative;}
+  .compare-cell.good::before{content:'✓ ';color:var(--volt);}
+  .compare-row.head .compare-cell{
+    font-family:'JetBrains Mono',monospace;
+    font-size:12px;letter-spacing:0.1em;text-transform:uppercase;
+  }
+  .compare-row.head .compare-cell.col-them{color:var(--slate);}
+  .compare-row.head .compare-cell.col-us{color:var(--volt);}
+
+  /* ---------- PROCESS ---------- */
+  .process{border-bottom:1px solid var(--line);}
+  .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
+  .process-card{border:1px solid var(--line);border-radius:6px;padding:28px 22px;position:relative;}
+  .process-card .pc-index{font-family:'JetBrains Mono',monospace;color:var(--volt);font-size:13px;margin-bottom:18px;}
+  .process-card h3{font-family:'Big Shoulders Display',sans-serif;font-weight:800;font-size:22px;text-transform:uppercase;margin-bottom:10px;}
+  .process-card p{font-size:14.5px;color:var(--slate);line-height:1.55;}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .quotes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .quote-card{border:1px solid var(--line);border-radius:6px;padding:30px;background:var(--ink-2);}
+  .quote-card p.q{font-size:16px;line-height:1.6;margin-bottom:22px;}
+  .quote-meta{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--slate);border-top:1px solid var(--line);padding-top:14px;}
+  .quote-meta b{color:var(--bone);font-style:normal;}
+
+  /* ---------- FAQ ---------- */
+  .faq{border-bottom:1px solid var(--line);}
+  .faq-list{max-width:760px;}
+  .faq-item{border-top:1px solid var(--line);}
+  .faq-list .faq-item:last-child{border-bottom:1px solid var(--line);}
+  .faq-item summary{
+    list-style:none;
+    cursor:pointer;
+    padding:24px 4px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-size:17px;
+    font-weight:600;
+    gap:20px;
+  }
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary .plus{
+    font-family:'JetBrains Mono',monospace;
+    font-size:20px;
+    color:var(--volt);
+    transition:transform .2s ease;
+    flex-shrink:0;
+  }
+  .faq-item[open] summary .plus{transform:rotate(45deg);}
+  .faq-item .faq-a{
+    padding:0 4px 24px;
+    color:var(--slate);
+    font-size:15px;
+    line-height:1.6;
+    max-width:600px;
+  }
+
+  /* ---------- CTA / CONTACT ---------- */
+  .cta-section{background:var(--ember);color:var(--ink);}
+  .cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .cta-grid h2{font-size:clamp(32px,4.5vw,52px);}
+  .cta-grid p{margin-top:16px;font-size:16.5px;max-width:420px;line-height:1.6;}
+  .cta-meta{margin-top:28px;display:flex;flex-direction:column;gap:10px;}
+  .cta-meta a{
+    font-family:'JetBrains Mono',monospace;
+    font-size:14px;
+    font-weight:700;
+    border-bottom:1px solid rgba(14,17,22,0.4);
+    width:fit-content;
+  }
+
+  form{display:flex;flex-direction:column;gap:14px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  input,textarea,select{
+    background:rgba(14,17,22,0.06);
+    border:1px solid rgba(14,17,22,0.25);
+    border-radius:4px;
+    padding:13px 14px;
+    font-family:'Inter',sans-serif;
+    font-size:14.5px;
+    color:var(--ink);
+  }
+  input::placeholder,textarea::placeholder{color:rgba(14,17,22,0.5);}
+  input:focus,textarea:focus,select:focus{outline:2px solid var(--ink);outline-offset:1px;}
+  textarea{resize:vertical;min-height:90px;}
+
+  .form-submit{
+    background:var(--ink);color:var(--bone);font-weight:700;font-size:15px;
+    padding:15px 26px;border-radius:4px;border:none;cursor:pointer;
+    width:fit-content;transition:transform .15s ease;
+    display:flex;align-items:center;gap:8px;
+  }
+  .form-submit:hover{transform:translateY(-2px);}
+  .form-note{font-size:12.5px;color:rgba(14,17,22,0.65);}
+
+  /* ---------- FOOTER ---------- */
+  footer{padding:56px 0 36px;}
+  .footer-top{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    flex-wrap:wrap;gap:32px;padding-bottom:36px;border-bottom:1px solid var(--line);
+  }
+  .footer-cols{display:flex;gap:64px;}
+  .footer-col h4{
+    font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:0.12em;
+    text-transform:uppercase;color:var(--slate);margin-bottom:14px;
+  }
+  .footer-col a, .footer-col p{display:block;font-size:14.5px;color:var(--bone);margin-bottom:9px;}
+  .footer-col a:hover{color:var(--volt);}
+  .footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;
+    padding-top:24px;font-size:13px;color:var(--slate);flex-wrap:wrap;gap:10px;
+  }
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal{opacity:1;transform:none;transition:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:980px){
+    .hero-grid{grid-template-columns:1fr;}
+    .standards-grid{grid-template-columns:repeat(2,1fr);}
+    .process-grid{grid-template-columns:repeat(2,1fr);}
+    .quotes-grid{grid-template-columns:1fr;}
+    .cta-grid{grid-template-columns:1fr;gap:40px;}
+    .footer-cols{gap:40px;}
+    .compare-cell{padding:18px 16px;font-size:13.5px;}
+  }
+  @media (max-width:720px){
+    .nav-links{display:none;}
+    .nav-toggle{display:block;}
+    .hero{padding:140px 0 64px;}
+    .service-row{grid-template-columns:1fr;gap:12px;}
+    .service-icon{display:none;}
+    .standards-grid{grid-template-columns:1fr;}
+    .process-grid{grid-template-columns:1fr;}
+    .form-row{grid-template-columns:1fr;}
+    .footer-top{flex-direction:column;}
+    .footer-cols{gap:32px;flex-wrap:wrap;}
+    .compare-row{grid-template-columns:1fr 1fr 1fr;}
+    .compare-cell{padding:14px 10px;font-size:12.5px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+
+<header>
+  <nav>
+    <a href="#top" class="logo">
+      <svg class="mark" viewBox="0 0 64 64" fill="none"><rect width="64" height="64" rx="10" fill="#161B22"/><path d="M14 40 L26 24 L34 32 L50 14" stroke="#D4FF3F" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 14 H50 V24" stroke="#D4FF3F" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Tez<span class="rank">Rank</span>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#compare">Why us</a>
+      <a href="#process">Process</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Book free audit</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<div class="mobile-panel" id="mobilePanel">
+  <a href="#services">Services</a>
+  <a href="#compare">Why us</a>
+  <a href="#process">Process</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Delhi NCR · SEO, Ads &amp; Web</p>
+        <h1 class="display">Your rank shouldn't move<br>at Delhi traffic speed.<br><em>Tez kar do.</em></h1>
+        <p class="lede">TezRank is a small, hands-on digital marketing team that helps Delhi NCR businesses get found on Google, win the right scroll on Meta, and turn that traffic into actual customers.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-primary">Book a free audit</a>
+          <a href="#services" class="btn btn-ghost">See what we do</a>
+        </div>
+      </div>
+
+      <div class="rank-panel reveal">
+        <div class="rp-label"><span>Tracked keyword</span><span>live</span></div>
+        <div class="rank-number">
+          <span class="hash">#</span><span class="digits" id="rankDigits">89</span>
+        </div>
+        <p class="rank-sub" id="rankKeyword">"best bakery in noida"</p>
+
+        <svg class="spark" viewBox="0 0 240 56" width="100%" height="56">
+          <path class="line" d="M2 48 L34 42 L66 44 L98 30 L130 32 L162 16 L194 18 L238 4" stroke="#D4FF3F" stroke-width="2" fill="none" stroke-linecap="round"/>
+        </svg>
+
+        <div class="rank-ticker">
+          <div class="tk-row"><span>plumber near me, dwarka</span><span class="up">↑ 14</span></div>
+          <div class="tk-row"><span>ca firm gurugram</span><span class="up">↑ 22</span></div>
+          <div class="tk-row"><span>boutique salon vasant kunj</span><span class="up">↑ 9</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip" aria-label="Industries we work with">
+    <div class="marquee-track">
+      <span>Salons &amp; Spas</span><span>Clinics</span><span>Real Estate</span><span>Restaurants &amp; Cafés</span><span>CA &amp; Legal Firms</span><span>Boutiques &amp; Retail</span><span>Coaching &amp; Education</span><span>Home Services</span>
+      <span>Salons &amp; Spas</span><span>Clinics</span><span>Real Estate</span><span>Restaurants &amp; Cafés</span><span>CA &amp; Legal Firms</span><span>Boutiques &amp; Retail</span><span>Coaching &amp; Education</span><span>Home Services</span>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">What we run</p>
+        <h2 class="display">Four levers.<br>One scoreboard.</h2>
+        <p>We don't sell a bundle you don't need. Pick what moves your business, and we'll tell you honestly if something else won't help yet.</p>
+      </div>
+
+      <div class="service-list">
+        <div class="service-row reveal">
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="10" cy="10" r="6" stroke="currentColor" stroke-width="2"/><path d="M15 15L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
+          <span class="service-tag">Organic</span>
+          <h3>SEO</h3>
+          <p>On-page fixes, local SEO, Google Business Profile and content that targets what your actual customers search — not vanity keywords.</p>
+        </div>
+        <div class="service-row reveal">
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="0.5" stroke="currentColor" stroke-width="2.5"/></svg></div>
+          <span class="service-tag">Search Ads</span>
+          <h3>Google Ads</h3>
+          <p>Campaigns built around intent, not impressions. We show up when someone's ready to call or buy, and cut what isn't converting fast.</p>
+        </div>
+        <div class="service-row reveal">
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 14V10C4 6 7 3 12 3C17 3 20 6 20 10V14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><rect x="3" y="14" width="4" height="6" rx="1" stroke="currentColor" stroke-width="2"/><rect x="17" y="14" width="4" height="6" rx="1" stroke="currentColor" stroke-width="2"/></svg></div>
+          <span class="service-tag">Social Ads</span>
+          <h3>Meta Ads</h3>
+          <p>Instagram and Facebook creative and targeting that earns a stop-scroll, paired with retargeting so the first ad isn't the only one they see.</p>
+        </div>
+        <div class="service-row reveal">
+          <div class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M3 9H21" stroke="currentColor" stroke-width="2"/><circle cx="6" cy="7" r="0.6" fill="currentColor"/></svg></div>
+          <span class="service-tag">Web</span>
+          <h3>Website Design</h3>
+          <p>Fast-loading, mobile-first sites built to hold the rank you earn and convert the traffic your ads and SEO send to it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STANDARDS -->
+  <section class="standards" id="results">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow on-paper">How we operate</p>
+        <h2 class="display">No agency theatre.</h2>
+        <p>These are commitments, not case-study screenshots. You can hold us to every one of them.</p>
+      </div>
+      <div class="standards-grid reveal">
+        <div class="standard-cell"><div class="num">48 hrs</div><div class="lbl">To deliver your first audit, free, no call required to get it.</div></div>
+        <div class="standard-cell"><div class="num">0</div><div class="lbl">Long lock-in contracts. Month-to-month, cancel with notice.</div></div>
+        <div class="standard-cell"><div class="num">100%</div><div class="lbl">Reporting in plain language — no jargon dashboards you can't read.</div></div>
+        <div class="standard-cell"><div class="num">1</div><div class="lbl">Direct point of contact. Not a different junior every month.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section class="compare" id="compare">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">The honest version</p>
+        <h2 class="display">Typical agency vs. TezRank.</h2>
+      </div>
+      <div class="compare-table reveal">
+        <div class="compare-row head">
+          <div class="compare-cell label"></div>
+          <div class="compare-cell col-them">Typical agency</div>
+          <div class="compare-cell col-us">TezRank</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell label">Contracts</div>
+          <div class="compare-cell bad">12-month lock-in</div>
+          <div class="compare-cell good">Month-to-month</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell label">Reporting</div>
+          <div class="compare-cell bad">Dense dashboard, no context</div>
+          <div class="compare-cell good">One plain-language report</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell label">Who you talk to</div>
+          <div class="compare-cell bad">A different junior each month</div>
+          <div class="compare-cell good">One direct point of contact</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell label">Strategy</div>
+          <div class="compare-cell bad">Same package for every client</div>
+          <div class="compare-cell good">Sized to your budget &amp; goal</div>
+        </div>
+        <div class="compare-row">
+          <div class="compare-cell label">Pricing</div>
+          <div class="compare-cell bad">Bundled, hard to itemise</div>
+          <div class="compare-cell good">Itemised — you see what you pay for</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">The first 30 days</p>
+        <h2 class="display">How we start.</h2>
+      </div>
+      <div class="process-grid">
+        <div class="process-card reveal">
+          <div class="pc-index mono">01 — Audit</div>
+          <h3>Free audit</h3>
+          <p>We check your site, your Google presence and your ads (if running) and tell you what's actually costing you customers.</p>
+        </div>
+        <div class="process-card reveal">
+          <div class="pc-index mono">02 — Plan</div>
+          <h3>90-day plan</h3>
+          <p>A plan sized to your budget, with the two or three things we'll fix first and why those, specifically.</p>
+        </div>
+        <div class="process-card reveal">
+          <div class="pc-index mono">03 — Execute</div>
+          <h3>Build &amp; run</h3>
+          <p>SEO, ads and site work move in parallel, not sequentially, so you're not waiting months to see anything live.</p>
+        </div>
+        <div class="process-card reveal">
+          <div class="pc-index mono">04 — Report</div>
+          <h3>Monthly review</h3>
+          <p>One call, one report, plain language: what worked, what didn't, and what we're changing next.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Early days, real words</p>
+        <h2 class="display">What clients say.</h2>
+      </div>
+      <div class="quotes-grid">
+        <div class="quote-card reveal">
+          <p class="q">"[Add a short, specific quote from a real client here — what changed for their business, in their words.]"</p>
+          <div class="quote-meta"><b>[Client Name]</b> — [Business type], Delhi NCR</div>
+        </div>
+        <div class="quote-card reveal">
+          <p class="q">"[Add a short, specific quote from a real client here — what changed for their business, in their words.]"</p>
+          <div class="quote-meta"><b>[Client Name]</b> — [Business type], Gurugram</div>
+        </div>
+        <div class="quote-card reveal">
+          <p class="q">"[Add a short, specific quote from a real client here — what changed for their business, in their words.]"</p>
+          <div class="quote-meta"><b>[Client Name]</b> — [Business type], Noida</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq" id="faq">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <p class="eyebrow">Before you ask</p>
+        <h2 class="display">Common questions.</h2>
+      </div>
+      <div class="faq-list reveal">
+        <details class="faq-item">
+          <summary>Do you sign long-term contracts?<span class="plus">+</span></summary>
+          <div class="faq-a">No. We work month-to-month. If it's not working, you shouldn't be stuck paying for it — and if it is working, you won't want to leave anyway.</div>
+        </details>
+        <details class="faq-item">
+          <summary>How fast will I actually see results?<span class="plus">+</span></summary>
+          <div class="faq-a">Google and Meta Ads can bring traffic within days of launch. SEO is slower and honest timelines matter: meaningful ranking movement usually takes 3–6 months, depending on competition.</div>
+        </details>
+        <details class="faq-item">
+          <summary>What's actually in the free audit?<span class="plus">+</span></summary>
+          <div class="faq-a">A look at your site speed and mobile experience, basic on-page SEO, your Google Business Profile, and a quick snapshot of where competitors in your area currently rank.</div>
+        </details>
+        <details class="faq-item">
+          <summary>Do you only work with Delhi NCR businesses?<span class="plus">+</span></summary>
+          <div class="faq-a">That's our home base and where we know the local search landscape best, but we work remotely with businesses elsewhere in India too.</div>
+        </details>
+        <details class="faq-item">
+          <summary>How do you charge?<span class="plus">+</span></summary>
+          <div class="faq-a">Itemised by service — you'll know exactly what's going toward management fees versus your actual ad spend. No bundled "packages" that hide the breakdown.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACT -->
+  <section class="cta-section" id="contact">
+    <div class="wrap cta-grid">
+      <div class="reveal">
+        <p class="eyebrow on-ember">Free, no-obligation</p>
+        <h2 class="display">Let's see your audit.</h2>
+        <p>Tell us your website and what you're trying to grow. We'll send back a real audit, not a sales pitch — within 48 hours.</p>
+        <div class="cta-meta">
+          <a href="mailto:hello@tezrank.io">hello@tezrank.io</a>
+          <a href="tel:+910000000000">+91 00000 00000</a>
+        </div>
+      </div>
+      <form class="reveal" onsubmit="return false;">
+        <div class="form-row">
+          <input type="text" placeholder="Your name" required>
+          <input type="tel" placeholder="Phone number" required>
+        </div>
+        <input type="text" placeholder="Business name">
+        <input type="url" placeholder="Website (if you have one)">
+        <textarea placeholder="What are you trying to grow right now?"></textarea>
+        <button class="form-submit" type="submit">Send for free audit →</button>
+        <p class="form-note">This form needs to be connected to an email service (e.g. Formspree) before it goes live — happy to wire that up.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <a href="#top" class="logo">
+          <svg class="mark" viewBox="0 0 64 64" fill="none"><rect width="64" height="64" rx="10" fill="#161B22"/><path d="M14 40 L26 24 L34 32 L50 14" stroke="#D4FF3F" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M40 14 H50 V24" stroke="#D4FF3F" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Tez<span class="rank">Rank</span>
+        </a>
+        <p style="color:var(--slate);font-size:14px;margin-top:14px;max-width:280px;">A small Delhi NCR digital marketing team. SEO, Google Ads, Meta Ads, websites.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Site</h4>
+          <a href="#services">Services</a>
+          <a href="#compare">Why us</a>
+          <a href="#process">Process</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Reach us</h4>
+          <a href="mailto:hello@tezrank.io">hello@tezrank.io</a>
+          <p>Delhi NCR, India</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> TezRank. All rights reserved.</span>
+      <span>Made in Delhi NCR.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Scroll progress bar
+  const bar = document.getElementById('progressBar');
+  function updateProgress(){
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    bar.style.width = scrolled + '%';
+  }
+  document.addEventListener('scroll', updateProgress, {passive:true});
+  updateProgress();
+
+  // Mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  const panel = document.getElementById('mobilePanel');
+  toggle.addEventListener('click', () => {
+    const isOpen = panel.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    toggle.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    panel.classList.remove('open');
+    toggle.classList.remove('open');
+    toggle.setAttribute('aria-expanded', false);
+    document.body.style.overflow = '';
+  }));
+
+  // Scroll reveal
+  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReduced && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach(el => el.classList.add('in'));
+  }
+
+  // Hero rank counter
+  if (!prefersReduced) {
+    const el = document.getElementById('rankDigits');
+    const sequence = [89, 67, 52, 38, 24, 15, 9, 4, 1];
+    let i = 0;
+    function step() {
+      if (i < sequence.length) {
+        el.style.opacity = 0;
+        setTimeout(() => {
+          el.textContent = sequence[i];
+          el.style.opacity = 1;
+          i++;
+          setTimeout(step, i === sequence.length ? 4000 : 420);
+        }, 120);
+      } else {
+        i = 0;
+        setTimeout(step, 1200);
+      }
+    }
+    setTimeout(step, 600);
+  }
+</script>
+
+</body>
+</html>
